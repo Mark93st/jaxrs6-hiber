@@ -75,7 +75,7 @@ public class TeacherRestController {
                                @Context SecurityContext securityContext)
             throws EntityNotFoundException {
 
-        if (securityContext.isUserInRole("TEACHER")) {
+        if (!securityContext.isUserInRole("TEACHER")) {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
         TeacherReadOnlyDTO dto = teacherService.getTeacherById(id);
